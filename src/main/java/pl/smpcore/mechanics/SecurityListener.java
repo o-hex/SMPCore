@@ -49,7 +49,10 @@ public class SecurityListener implements Listener {
         String name = event.getName();
 
         // 1. Anti-VPN Check
-        if (Main.getInstance().getConfig().getBoolean("rules.anti_vpn", false)) {
+        boolean antiVpn = Main.getInstance().getConfig().contains("security.anti_vpn")
+                ? Main.getInstance().getConfig().getBoolean("security.anti_vpn", false)
+                : Main.getInstance().getConfig().getBoolean("rules.anti_vpn", false);
+        if (antiVpn) {
             if (!ip.equals("127.0.0.1") && !ip.startsWith("192.168.") && !ip.startsWith("10.")) {
                 try {
                     URL url = new URL("http://ip-api.com/json/" + ip + "?fields=status,proxy,hosting");
@@ -81,13 +84,18 @@ public class SecurityListener implements Listener {
         }
 
         // 2. Anti-Alt Check
-        if (Main.getInstance().getConfig().getBoolean("rules.anti_alt", false)) {
+        boolean antiAlt = Main.getInstance().getConfig().contains("security.anti_alt")
+                ? Main.getInstance().getConfig().getBoolean("security.anti_alt", false)
+                : Main.getInstance().getConfig().getBoolean("rules.anti_alt", false);
+        if (antiAlt) {
             initAlts();
             String safeIp = ip.replace('.', '_');
             List<String> accounts = altsConfig.getStringList("ips." + safeIp);
 
             if (!accounts.contains(name)) {
-                int maxAlts = Main.getInstance().getConfig().getInt("rules.max_alts_per_ip", 1);
+                int maxAlts = Main.getInstance().getConfig().contains("security.max_alts_per_ip")
+                        ? Main.getInstance().getConfig().getInt("security.max_alts_per_ip", 1)
+                        : Main.getInstance().getConfig().getInt("rules.max_alts_per_ip", 1);
                 if (accounts.size() >= maxAlts) {
                     event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER,
                             ChatColor.RED + "You have reached the maximum number of accounts allowed for your IP address!");
@@ -105,7 +113,10 @@ public class SecurityListener implements Listener {
         Player player = event.getPlayer();
 
         // Minimap fairplay message (Xaero Minimap entity radar & cave disable protocol)
-        if (Main.getInstance().getConfig().getBoolean("rules.fairplay_minimap", false)) {
+        boolean fairplay = Main.getInstance().getConfig().contains("rules.fairplay_minimap")
+                ? Main.getInstance().getConfig().getBoolean("rules.fairplay_minimap", false)
+                : Main.getInstance().getConfig().getBoolean("rules.minimap_fair", false);
+        if (fairplay) {
             player.sendMessage("§3§6§3§6§3§6§e");
         }
     }

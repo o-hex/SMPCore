@@ -31,6 +31,13 @@ public class BannedItemsListener implements Listener {
             return true;
         }
 
+        if (config.isList("banned-items")) {
+            for (String item : config.getStringList("banned-items")) {
+                if (item != null && item.equalsIgnoreCase(material.name())) {
+                    return true;
+                }
+            }
+        }
         return config.getBoolean("banned-items." + material.name(), false);
     }
 

@@ -72,10 +72,16 @@ public class ExplosionRulesListener implements Listener {
         }
     }
 
+    private boolean isCartsBanned() {
+        return Main.getInstance().getConfig().contains("rules.ban_carts")
+                ? Main.getInstance().getConfig().getBoolean("rules.ban_carts", false)
+                : Main.getInstance().getConfig().getBoolean("rules.ban_cart_exploding", false);
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onCartPlace(PlayerInteractEvent event) {
         if (event.getItem() != null && event.getItem().getType() == Material.TNT_MINECART) {
-            if (Main.getInstance().getConfig().getBoolean("rules.ban_carts", false)) {
+            if (isCartsBanned()) {
                 event.setCancelled(true);
                 event.getPlayer().sendMessage(ChatColor.RED + "TNT minecarts are disabled on this server!");
             }
@@ -85,7 +91,7 @@ public class ExplosionRulesListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onCartDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof ExplosiveMinecart && event.getEntity() instanceof Player) {
-            if (Main.getInstance().getConfig().getBoolean("rules.ban_carts", false)) {
+            if (isCartsBanned()) {
                 event.setCancelled(true);
             }
         }

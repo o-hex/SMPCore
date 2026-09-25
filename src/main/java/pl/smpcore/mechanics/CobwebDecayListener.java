@@ -16,7 +16,9 @@ public class CobwebDecayListener implements Listener {
 
         Block block = event.getBlockPlaced();
         if (block.getType() == Material.COBWEB) {
-            int delaySeconds = Main.getInstance().getConfig().getInt("rules.cobweb_decay_time", 20);
+            int delaySeconds = Main.getInstance().getConfig().contains("rules.cobweb_decay_seconds")
+                    ? Main.getInstance().getConfig().getInt("rules.cobweb_decay_seconds", 10)
+                    : Main.getInstance().getConfig().getInt("rules.cobweb_decay_time", 20);
             new BukkitRunnable() {
                 @Override
                 public void run() {

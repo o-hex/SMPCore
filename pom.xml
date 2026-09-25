@@ -33,6 +33,10 @@
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
+        <repository>
+            <id>leafmc</id>
+            <url>https://maven.leafmc.one/snapshots/</url>
+        </repository>
     </repositories>
 
     <dependencies>
