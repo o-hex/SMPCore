@@ -1,0 +1,290 @@
+vanish_join_message: "§e<player> joined the game" # Leave the string empty ("") for no message
+vanish_leave_message: "§e<player> left the game"  # Leave the string empty ("") for no message
+altar_enabled: true  # turn this off for better performance if you dont use altars
+
+custom_join_sound: ""
+custom_leave_sound: ""
+
+custom_join_sound_pitch: 1.0
+custom_leave_sound_pitch: 1.0
+
+death_message: null  # use <attacker> and <victim> for the players, null makes the plugin ignore this
+
+custom_spawn: # location
+respawn_spawn: # location
+
+combat_system_world: # case sensitive
+  - ALL
+
+heavy:
+  continuous_item_limit: true # turning this off improves performance but increases the risk of players bypassing the item limit
+  item_limit_check_interval: 20
+  item_limit_enabled: true # turn this off if you aren't going to use itemlimit on your server
+  combat_actionorbossbar: true
+
+
+
+
+
+
+config:
+  combat_tag_time: 30
+  combat_log_mode: "ANNOUNCE"         # "KILL" or "ANNOUNCE"
+  combat_log_no_restock: false
+  combat_display: NONE           # BOSSBAR / ACTIONBAR / WEAPON_COOLDOWN / NONE
+
+  grace_duration: 30                  # In minutes, Grace starts when you do /start (It will end if the server reloads or restarts)
+  grace_end_title: "§aGRACE IS OVER!"
+  grace_end_subtitle: "§7PvP has been enabled"
+  grace_end_message: ""
+  immunity_during_grace: true         # If set to false players will take damage from anything except players
+  start_smp_title: §aGRACE
+  start_smp_subtitle: §7You will not take damage for the next %time% minutes
+  start_smp_message: ""
+
+  start_border_size: 2000             # 2000 = 1000x1000, This border will be set when you do /start
+  start_border_speed: 60              # In seconds
+  ritual_duration: 60
+  ritual_particle_color: "blue"       # OPTIONS: blue, red, fuchsia, gray, black, white, purple, orange, lime, aqua, yellow, green.
+  allow_anvils_to_exceed_enchant_limit: false
+  start_steak: 0
+  before_start_border: 100            # Less than this chosen number will also work
+  combat_damage: 1
+  # When the border is under 100 blocks wide players will be immune and will not lose hunger.
+  launch: false
+  launch_strength: 4
+  kit_on_join: true
+  string_duper_string_per_break: 2
+  immortal_item: false
+  afk_protection_time: 60
+  afk_protection_time_command: 10 # not actually a command just typing afk in chat
+  start_commands: # You can also do <sender> to give the sender smth
+    - effect give @a minecraft:resistance 1 254
+  whitelisted_commands:
+    - ability1
+    - ability2
+    - controls
+    - swap
+    - lspark
+    - rspark
+    - settings
+
+
+banned-effects:
+  # - "ALL" To ban all potions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+goldenhead:
+  consume_seconds: 1
+  cooldown: 10
+
+  speed_amplifier: 0 # 0 means it doesn't give speed
+  speed_duration: 0 # in seconds
+
+  absorption_amplifier: 1
+  absorption_duration: 120
+
+  regeneration_duration: 10
+  regeneration_amplifier: 2
+
+
+
+
+# GUI Stuff, Don't mind!
+rules:
+  mace_limit: true                   # 1 time craft mace?
+  ban_mace: false
+  ban_pearls: false
+  ban_crystal_pvp: true
+  ban_tier_2_potions: false             # Ban Tier 2 pots
+  ban_minimap: true                   # Bans xaero minimap (After changing this you need to rejoin)
+  naked_protection: false             # Makes naked not take damage from other players unless they attack them first
+  afk_protection: false               # Makes afk players not take damage while afk (players need to type "afk" to go afk)
+  combat_system: true
+  sharpness: 5                        # Max allowed Sharpness
+  protection: 4                       # Max allowed Protection
+
+  ban_netherite: true                 # ban netherite
+  ban_killing_villagers: false        # Make villagers immortal (except to zombies)
+  infinite_restock: false              # Make villagers not run out of stock
+  anti_health_indicators: true
+  clumps: true
+  121_paper_dupe_patch: true          # Fixes the 1.21 Paper dupe glitch
+  ban_carts: true
+  ban_bed_bombing: true
+  hide_armor_durability: true
+  pvp: true
+  extra_damage: 0
+  mace_stun_shield: false
+  drops: false                         # Make drops from death never despawn
+  always_health_indicators: false
+  shield_cooldown: 5
+  ender_pearl: 1
+  wind_charge: 0.5
+  trident: 0
+  gap: 0
+  ban_seed_cracking: true
+  hide_killer: false
+  hide_killed: false
+  cooldowns: false
+  ban_all_tipped_arrows: false
+  mace: 0
+  ban_breach_swapping: false
+  string_dupers: false
+  enchant_limit_bypass_items_with_custom_model_data: true
+  minimap_fair: false # when turning this on the minimap will be enabled but players can't see entities in it
+  mace_damage_limiter: 0
+  stop_dropping_no_store_items: false
+  combat_message: §cYou are now in combat for §f§l<combat_time>
+  death_sound: minecraft:entity.player.death
+  death_sound_pitch: 1
+  broadcast_message: "§4[📢 ʙʀᴏᴀᴅᴄᴀꜱᴛ] <message>"
+  clickVillager: false
+  clickVillager_anchor: false
+  clickVillager_owner: false
+  cart_damage_limiter: 0
+  arrow_damage_limiter: 0
+  crystal_damage_limiter: 0
+  tnt_damage_limiter: 0
+  fall_damage_limiter: 0
+  reply_message_format_sender: "§e[Me -> <target>] §7<message>"
+  reply_message_format_receiver: "§e[<player> -> Me] §7<message>"
+  better_pearl_catching_hitbox: 0.75
+  anti_stasis_chamber_pearl_remove_after_seconds: 10
+  cobweb_decay: false
+  cobweb_decay_seconds: 10
+
+shield_tweaks:
+  sound_fix: true
+  5_tick_delay_fix: true
+  skip-vanilla-damage-tick-when-shield-blocked: true
+
+anticheat:
+  anti-xray:
+    enabled: true
+    engine-mode: 1
+
+dimensions:
+  allow_nether: true
+  allow_end: false
+
+easy_recipes:
+  easy_gaps: false
+  easy_cobwebs: false
+
+banned-items:
+  - BANNED_ITEM_EXAMPLE
+
+whitelist:
+  - Notch
+
+ritual_items:
+  -
+
+altarSettings:
+  blocktype: LODESTONE # Make the block STRUCTURE_BLOCK to make it have the altar smp altar texture
+  rotationSpeed: 2
+
+altars:
+  example:
+    name: "example"
+    hologram-height: 2.5      # the distance between the item and the hologram
+    item_height: 1.75          # the distance between the block and the item
+    reward:                   # use /smpcorealtar set while holding something in your main hand
+    message: "§f§l<player> §6§lhas crafted the §e§l<item>§6!"                 # what it sends in chat after the altar is crafted
+    # Placeholders: <player>, <item>>, <location>, <world>
+    enabled: true
+    consume_materials: true   # Should it consume the items needed for the craft?
+    recipe:
+      ingredients:
+        - material: GLOWSTONE_DUST
+          amount: 64
+          custom_model_data: 0 # Keep this 0 unless you want a custom item
+        - material: PLAYER_HEAD
+          amount: 12
+          custom_model_data: 0
+
+
+shulker_recipe:
+
+heart_recipe:
+
+custom_craft_items:
+
+custom_recipes:
+
+banned-tipped:
+
+enchant_bypass:
+
+banned_players:
+
+security:
+  anti_vpn: false
+  anti_vpn_api: "http://ip-api.com/json/<ip>?fields=status,proxy,hosting"
+  anti_vpn_kick_message: "&cVPNs and proxies are not allowed on this server"
+  anti_vpn_exempt: []
+  anti_alt: false
+  anti_alt_kick: false
+  anti_alt_kick_message: "&cAlt accounts are not allowed on this server"

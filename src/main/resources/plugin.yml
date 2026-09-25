@@ -1,0 +1,79 @@
+name: SMPCore
+version: 3.8 #pom.xml
+main: pl.Main
+api-version: '1.21'
+softdepend: [packetevents, WorldGuard]
+permissions:
+  smpcore.*:
+    default: op
+    children:
+      smpcore.itemlimit: true
+      smpcore.whitelistplus: true
+      smpcore.start: true
+      smpcore.settings: true
+      smpcore.ritual: true
+      smpcore.banitem: true
+      smpcore.enchant: true
+      smpcore.sckit: true
+      smpcore.vanish: true
+      smpcore.invsee: true
+      smpcore.endersee: true
+      smpcore.rollback: true
+      smpcore.setcustomspawn: true
+      smpcore.setrespawnspawn: true
+      smpcore.worldtp: true
+      smpcore.saltar: true
+      smpcore.sbroadcast: true
+      smpcore.alerts: true
+      smpcore.bypass.alt: false
+
+  smpcore.string:
+    default: true
+  smpcore.reply:
+    default: true
+
+
+commands:
+  string:
+    permission: smpcore.string
+  itemlimit:
+    usage: /itemlimit <amount>
+    permission: smpcore.itemlimit
+  whitelistplus:
+    permission: op
+  start:
+    permission: smpcore.start
+  stopgrace:
+    permission: smpcore.start
+  settings:
+    permission: smpcore.settings
+  ritual:
+    permission: smpcore.ritual
+  banitem:
+    permission: smpcore.banitem
+  enchant:
+    permission: smpcore.enchant
+  sckit:
+    permission: smpcore.sckit
+  vanish:
+    permission: smpcore.vanish
+  invsee:
+    permission: smpcore.invsee
+  endersee:
+    permission: smpcore.endersee
+  rollback:
+    usage: /rollback <player>
+    permission: smpcore.rollback
+  setcustomspawn:
+    permission: smpcore.setcustomspawn
+  setrespawnspawn:
+    permission: smpcore.setrespawnspawn
+  worldtp:
+    permission: smpcore.worldtp
+  saltar:
+    permission: smpcore.saltar
+  sbroadcast:
+    permission: smpcore.sbroadcast
+  reply:
+    permission: smpcore.reply
+    aliases: [r]
