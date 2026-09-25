@@ -73,7 +73,7 @@ public class CombatListener implements Listener {
             return;
         }
 
-        int tagTime = Main.getInstance().getConfig().getInt("config.combat_tag_time", 30);
+        int tagTime = CombatManager.getTagTime();
         String rawMsg = Main.getInstance().getConfig().getString("rules.combat_message", "§cYou are now in combat for §f§l<combat_time>");
         String combatMsg = rawMsg.replace("<combat_time>", tagTime + "s");
 
@@ -116,14 +116,19 @@ public class CombatListener implements Listener {
         String message = event.getMessage().toLowerCase();
         String command = message.split(" ")[0];
 
-        List<String> allowed = Main.getInstance().getConfig().getStringList("rules.allowed_combat_commands");
-        if (allowed.isEmpty()) {
+        List<String> allowed = Main.getInstance().getConfig().getStringList("config.whitelisted_commands");
+        if (allowed == null || allowed.isEmpty()) {
+            allowed = Main.getInstance().getConfig().getStringList("rules.allowed_combat_commands");
+        }
+        if (allowed == null || allowed.isEmpty()) {
             allowed = DEFAULT_ALLOWED_COMMANDS;
         }
 
         boolean isAllowed = false;
+        String cmdClean = command.startsWith("/") ? command.substring(1) : command;
         for (String allow : allowed) {
-            if (command.equalsIgnoreCase(allow) || command.startsWith(allow.toLowerCase() + " ")) {
+            String allowClean = allow.startsWith("/") ? allow.substring(1) : allow;
+            if (cmdClean.equalsIgnoreCase(allowClean) || message.startsWith("/" + allowClean.toLowerCase() + " ") || message.startsWith(allowClean.toLowerCase() + " ")) {
                 isAllowed = true;
                 break;
             }

@@ -45,6 +45,7 @@ config:
   start_border_size: 2000             # 2000 = 1000x1000, This border will be set when you do /start
   start_border_speed: 60              # In seconds
   ritual_duration: 60
+  ritual_radius: 5
   ritual_particle_color: "blue"       # OPTIONS: blue, red, fuchsia, gray, black, white, purple, orange, lime, aqua, yellow, green.
   allow_anvils_to_exceed_enchant_limit: false
   start_steak: 0
@@ -172,7 +173,23 @@ rules:
   clumps: true
   121_paper_dupe_patch: true          # Fixes the 1.21 Paper dupe glitch
   ban_carts: true
+  ban_cart_exploding: true
   ban_bed_bombing: true
+  ban_anchor_exploding: false
+  warden: true
+  disable_vaults: false
+  anti_draining: true
+  anti_stasis_chamber: false
+  anti_stasis_chamber_pearl_remove_after_seconds: 10
+  slash_string: false
+  slash_string_cooldown: 30
+  happyGhastSpeed: 0.05
+  combat_log_message: "§c<player> combat logged!"
+  immortal_item: false
+  make_custom_items_glow: false
+  attributeSwapping: false
+  anti_vpn: false
+  anti_alt: false
   hide_armor_durability: true
   pvp: true
   extra_damage: 0
@@ -194,6 +211,7 @@ rules:
   string_dupers: false
   enchant_limit_bypass_items_with_custom_model_data: true
   minimap_fair: false # when turning this on the minimap will be enabled but players can't see entities in it
+  fairplay_minimap: false
   mace_damage_limiter: 0
   stop_dropping_no_store_items: false
   combat_message: §cYou are now in combat for §f§l<combat_time>
@@ -210,10 +228,11 @@ rules:
   fall_damage_limiter: 0
   reply_message_format_sender: "§e[Me -> <target>] §7<message>"
   reply_message_format_receiver: "§e[<player> -> Me] §7<message>"
-  better_pearl_catching_hitbox: 0.75
-  anti_stasis_chamber_pearl_remove_after_seconds: 10
+  better_pearl_catching_hitbox: true
+  better_pearl_catching_hitbox_size: 0.75
   cobweb_decay: false
   cobweb_decay_seconds: 10
+  cobweb_decay_time: 10
 
 shield_tweaks:
   sound_fix: true
@@ -224,6 +243,9 @@ anticheat:
   anti-xray:
     enabled: true
     engine-mode: 1
+  obfuscation:
+    items:
+      hide-durability: false
 
 dimensions:
   allow_nether: true
@@ -288,3 +310,9 @@ security:
   anti_alt: false
   anti_alt_kick: false
   anti_alt_kick_message: "&cAlt accounts are not allowed on this server"
+  max_alts_per_ip: 1
+
+banned-tier1-effects:
+  strength: false
+  speed: false
+  invisibility: false

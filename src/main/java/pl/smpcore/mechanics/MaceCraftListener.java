@@ -59,7 +59,12 @@ public class MaceCraftListener implements Listener {
                 return;
             }
 
-            int maceLimit = Main.getInstance().getConfig().getInt("rules.mace_limit", 0);
+            int maceLimit;
+            if (Main.getInstance().getConfig().isBoolean("rules.mace_limit")) {
+                maceLimit = Main.getInstance().getConfig().getBoolean("rules.mace_limit", false) ? 1 : 0;
+            } else {
+                maceLimit = Main.getInstance().getConfig().getInt("rules.mace_limit", 0);
+            }
             if (maceLimit > 0) {
                 init();
                 int craftedCount = maceConfig.getInt("crafted_total", 0);

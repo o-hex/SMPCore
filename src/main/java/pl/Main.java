@@ -503,7 +503,9 @@ public final class Main extends JavaPlugin implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         if (event.isCancelled()) return;
         boolean dropsUnlimited = getConfig().getBoolean("rules.drops", true);
-        boolean immortal = getConfig().getBoolean("rules.immortal_item", false);
+        boolean immortal = getConfig().contains("rules.immortal_item")
+                ? getConfig().getBoolean("rules.immortal_item", false)
+                : getConfig().getBoolean("config.immortal_item", false);
         if (!dropsUnlimited && !immortal) return;
 
         List<ItemStack> drops = new ArrayList<>(event.getDrops());
@@ -653,7 +655,9 @@ public final class Main extends JavaPlugin implements Listener {
         try {
             YamlConfiguration yaml = YamlConfiguration.loadConfiguration(file);
             String path = "anticheat.obfuscation.items.hide-durability";
-            boolean desired = getConfig().getBoolean(path, false);
+            boolean desired = getConfig().contains(path)
+                    ? getConfig().getBoolean(path, false)
+                    : getConfig().getBoolean("rules.hide_armor_durability", false);
             boolean current = yaml.getBoolean(path, true);
             if (current != desired) {
                 yaml.set(path, desired);

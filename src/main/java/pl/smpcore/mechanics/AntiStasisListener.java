@@ -15,6 +15,7 @@ public class AntiStasisListener implements Listener {
 
         if (event.getEntity() instanceof EnderPearl) {
             EnderPearl pearl = (EnderPearl) event.getEntity();
+            int seconds = Main.getInstance().getConfig().getInt("rules.anti_stasis_chamber_pearl_remove_after_seconds", 10);
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -22,7 +23,7 @@ public class AntiStasisListener implements Listener {
                         pearl.remove();
                     }
                 }
-            }.runTaskLater(Main.getInstance(), 200L); // 10 seconds
+            }.runTaskLater(Main.getInstance(), seconds * 20L);
         }
     }
 }

@@ -83,7 +83,7 @@ public class SettingsGUI implements Listener {
         inv.setItem(12, createToggle("Crystal PvP", "rules.ban_crystal_pvp", Material.END_CRYSTAL, true));
         inv.setItem(13, createToggle("Bed Bombing", "rules.ban_bed_bombing", Material.RED_BED, false));
         inv.setItem(14, createToggle("Anchor Exploding", "rules.ban_anchor_exploding", Material.RESPAWN_ANCHOR, false));
-        inv.setItem(15, createToggle("Minecart Exploding", "rules.ban_cart_exploding", Material.TNT_MINECART, false));
+        inv.setItem(15, createToggle("Minecart Exploding", "rules.ban_carts", Material.TNT_MINECART, false));
         inv.setItem(16, createToggle("Mace Ban", "rules.ban_mace", Material.MACE, false));
 
         inv.setItem(19, createToggle("Mace Stun Shield", "rules.mace_stun_shield", Material.SHIELD, false));
@@ -360,6 +360,18 @@ public class SettingsGUI implements Listener {
                                     cfg.set("dimensions.allow_nether", !newVal);
                                 } else if (key.equals("rules.disable_end")) {
                                     cfg.set("dimensions.allow_end", !newVal);
+                                } else if (key.equals("rules.ban_carts")) {
+                                    cfg.set("rules.ban_cart_exploding", newVal);
+                                } else if (key.equals("rules.anti_alt")) {
+                                    cfg.set("security.anti_alt", newVal);
+                                } else if (key.equals("rules.anti_vpn")) {
+                                    cfg.set("security.anti_vpn", newVal);
+                                } else if (key.equals("rules.fairplay_minimap")) {
+                                    cfg.set("rules.minimap_fair", newVal);
+                                } else if (key.equals("rules.immortal_item")) {
+                                    cfg.set("config.immortal_item", newVal);
+                                } else if (key.equals("anticheat.obfuscation.items.hide-durability")) {
+                                    cfg.set("rules.hide_armor_durability", newVal);
                                 }
                                 Main.getInstance().saveConfig();
                                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, newVal ? 1.2f : 0.8f);

@@ -19,7 +19,11 @@ public final class CombatManager {
     private CombatManager() {}
 
     public static int getTagTime() {
-        return Main.getInstance().getConfig().getInt("rules.combat_tag_time", 30);
+        org.bukkit.configuration.file.FileConfiguration cfg = Main.getInstance().getConfig();
+        if (cfg.contains("config.combat_tag_time")) {
+            return cfg.getInt("config.combat_tag_time", 30);
+        }
+        return cfg.getInt("rules.combat_tag_time", 30);
     }
 
     public static void tag(Player player) {
